@@ -8,10 +8,8 @@ import 'app/routes/app_pages.dart';
 import 'config/theme/my_theme.dart';
 
 Future<void> main() async {
-  // wait for bindings
   WidgetsFlutterBinding.ensureInitialized();
 
-  // init shared preference
   await MySharedPref.init();
 
   runApp(
@@ -26,7 +24,7 @@ Future<void> main() async {
           title: "E-commerce App",
           useInheritedMediaQuery: true,
           debugShowCheckedModeBanner: false,
-          builder: (context,widget) {
+          builder: (context, widget) {
             bool themeIsLight = MySharedPref.getThemeIsLight();
             return Theme(
               data: MyTheme.getThemeData(isLight: themeIsLight),
@@ -36,7 +34,8 @@ Future<void> main() async {
               ),
             );
           },
-          initialRoute: AppPages.INITIAL, // first screen to show when app is running
+          initialRoute:
+              AppPages.INITIAL, // first screen to show when app is running
           getPages: AppPages.routes, // app screens
         );
       },
